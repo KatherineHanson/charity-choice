@@ -18,7 +18,7 @@ describe('/donations', () => {
   afterEach(donationMock.remove);
 
   describe('POST /donations', () => {
-    test('200 should return a donation', () => {
+    test.only('200 should return a donation', () => {
       let tempProfile;
       let tempCharity;
       return profileMock.create()

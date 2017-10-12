@@ -9,13 +9,13 @@ let fuzzy = (filterTerm) => new RegExp('.*' + filterTerm.toLowerCase().split('')
 
 module.exports = new Router()
   .post('/donations', bearerAuth, (req, res, next) => {
-    if(!req.body.amount || !req.body.account || !req.body.profile || !req.body.charity)
+    if(!req.body.amount || !req.body.profile || !req.body.charity)
       return next(httpErrors(400, 'amnout, account, profile, and charity required'));
     return new Donation({
       ...req.body,
       amount: req.body.amount,
       inHonorOf: req.body.inHonorOf,
-      account: req.body.account._id,
+      account: req.account._id,
       profile: req.body.profile,
       charity: req.body.charity,
     }).save()
